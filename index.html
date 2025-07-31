@@ -82,7 +82,7 @@
       100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
     }
 
-    iframe {
+    audio {
       display: none;
     }
 
@@ -94,7 +94,7 @@
 </head>
 <body>
   <h1>Em có iu anh khôngg 👉👈</h1>
-  <p>Nếu em không chọn hoặc thoát là em giận đó nha 😡</p>
+  <p>Nếu em không chọn hoặc thoát là em iu anh đó nha 😡</p>
 
   <div class="poem" id="poem"></div>
 
@@ -103,13 +103,16 @@
     <button class="btn" id="yes">Có iuuu anh 💘</button>
   </div>
 
-  <iframe id="music" allow="autoplay" width="0" height="0" frameborder="0"></iframe>
+  <audio id="bgMusic" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2023/04/19/audio_c61c40d8a8.mp3?filename=romantic-background-music-144121.mp3" type="audio/mp3">
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
     const poem = document.getElementById('poem');
-    const music = document.getElementById('music');
+    const music = document.getElementById('bgMusic');
 
     // Hiệu ứng tim rơi
     setInterval(() => {
@@ -158,12 +161,19 @@
       alert("Anh cũng iu emm nhìu lắm đóooo 💖");
     });
 
-    // Phát nhạc khi bấm bất kỳ đâu
+    // Phát nhạc sau khi người dùng chạm/bấm
     function startMusic() {
-      music.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&auto_play=true";
+      if (music.paused) {
+        music.play().catch(err => {
+          console.log("Không thể phát nhạc:", err);
+        });
+      }
       document.removeEventListener('click', startMusic);
+      document.removeEventListener('touchstart', startMusic);
     }
+
     document.addEventListener('click', startMusic);
+    document.addEventListener('touchstart', startMusic);
   </script>
 </body>
 </html>
