@@ -1,1 +1,141 @@
-mr blue
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Em có iu anh hongg 💘</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial;
+      background-color: #ffd6e7;
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #ff3366;
+      font-size: 40px;
+      margin-top: 30px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #d70040;
+      margin: 10px 0;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 2px solid red;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #no {
+      background-color: #ff4d4d;
+      color: white;
+    }
+
+    #yes {
+      background-color: white;
+      color: red;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: floatDown 4s linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-50px) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .poem-container {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      color: #8b0000;
+      font-size: 18px;
+      animation: fadeIn 2s ease-in-out;
+      font-style: italic;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Em có iu anh khônggggg 👉👈</h1>
+  <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
+
+  <button id="no" class="btn">Không iu anhh 😠</button>
+  <button id="yes" class="btn">có iuuu anh 💘</button>
+
+  <div class="poem-container" id="poem"></div>
+
+  <script>
+    const noBtn = document.getElementById('no');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 100));
+      const y = Math.floor(Math.random() * (window.innerHeight - 40));
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
+    });
+
+    document.getElementById('yes').onclick = () => {
+      alert("Anh cũng iu emmmmm 💖");
+    };
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }, 300);
+
+    const poems = [
+      "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
+      "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
+      "Trái tim anh không đỏ,\nNhưng vì em mà hóa ngọc ngà ❤️",
+      "Anh không phải thi sĩ đâu,\nNhưng em là cả bài thơ anh viết 💌",
+      "Đêm nằm anh chẳng ngủ yên,\nChỉ mong một tiếng 'yêu anh' dịu dàng 😚",
+      "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
+      "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
+    ];
+
+    let currentPoem = 0;
+    const poemDiv = document.getElementById('poem');
+
+    function showNextPoem() {
+      poemDiv.style.opacity = 0;
+      setTimeout(() => {
+        poemDiv.innerText = poems[currentPoem];
+        poemDiv.style.opacity = 1;
+        currentPoem = (currentPoem + 1) % poems.length;
+      }, 500);
+    }
+
+    setInterval(showNextPoem, 5000); // đổi thơ mỗi 5 giây
+    showNextPoem();
+  </script>
+</body>
+</html>
+
