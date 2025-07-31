@@ -1,89 +1,158 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
-  <title>Anh còn iu em hongg 💘</title>
+  <title>Em có iu anh hongg 💘</title>
   <style>
     body {
       text-align: center;
       font-family: Arial;
-      background-color: #e0ebf5;
+      background-color: #ffd6e7;
       overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
+
     h1 {
       color: #ff3366;
       font-size: 40px;
-      margin-top: 60px;
-    }
-    p {
-      font-size: 24px;
-      color: #333;
-      margin-bottom: 40px;
-    }
-    button {
-      font-size: 20px;
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    #yes {
-      background-color: #4CAF50;
-      color: white;
-    }
-    #no {
-      background-color: #f44336;
-      color: white;
-      position: absolute;
-      left: 50%;
-      top: 60%;
-      transform: translate(-50%, -50%);
-    }
-    iframe {
       margin-top: 30px;
+    }
+
+    p {
+      font-size: 20px;
+      color: #d70040;
+      margin: 10px 0;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 2px solid red;
+      margin: 10px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #no {
+      background-color: #ff4d4d;
+      color: white;
+    }
+
+    #yes {
+      background-color: white;
+      color: red;
+    }
+
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 24px;
+      animation: floatDown 4s linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% {
+        transform: translateY(-50px) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+
+    .poem-container {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      color: #8b0000;
+      font-size: 18px;
+      animation: fadeIn 2s ease-in-out;
+      font-style: italic;
+      white-space: pre-line;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .music-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
     }
   </style>
 </head>
 <body>
-  <h1>Anh còn iu em hongg 💘</h1>
-  <p>Trả lời điiiiii 😳👇</p>
-  <button id="yes">Iuuu 💘</button>
-  <button id="no">Không iu anhh 😠</button>
+  <h1>Em có iu anh khônggggg 👉👈</h1>
+  <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
 
-  <iframe width="0" height="0" src="https://www.nhaccuatui.com/mh/background/dZIO9Uo28HvK" frameborder="0" allowfullscreen></iframe>
+  <button id="no" class="btn">Không iu anhh 😠</button>
+  <button id="yes" class="btn">có iuuu anh 💘</button>
+
+  <!-- Nhạc nền từ SoundCloud -->
+  <div class="music-player">
+    <iframe
+      width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&color=%23ff6699&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+    ></iframe>
+  </div>
+
+  <div class="poem-container" id="poem"></div>
 
   <script>
-    const yesBtn = document.getElementById('yes');
     const noBtn = document.getElementById('no');
-
-    // Nút "Yes"
-    yesBtn.addEventListener('click', () => {
-      alert('Anh biết mà, yêu em nhấtttt 💖');
+    noBtn.addEventListener('mouseover', () => {
+      const x = Math.floor(Math.random() * (window.innerWidth - 100));
+      const y = Math.floor(Math.random() * (window.innerHeight - 40));
+      noBtn.style.position = 'absolute';
+      noBtn.style.left = `${x}px`;
+      noBtn.style.top = `${y}px`;
     });
 
-    // Hàm tính khoảng cách giữa chuột và nút "No"
-    function getDistance(x1, y1, x2, y2) {
-      const dx = x1 - x2;
-      const dy = y1 - y2;
-      return Math.sqrt(dx * dx + dy * dy);
+    document.getElementById('yes').onclick = () => {
+      alert("Anh cũng iu emmmmm 💖");
+    };
+
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = '💖';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      document.body.appendChild(heart);
+      setTimeout(() => {
+        heart.remove();
+      }, 4000);
+    }, 300);
+
+    const poems = [
+      "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
+      "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
+      "Trái tim anh không đỏ,\nNhưng vì em mà hóa ngọc ngà ❤️",
+      "Anh không phải thi sĩ đâu,\nNhưng em là cả bài thơ anh viết 💌",
+      "Đêm nằm anh chẳng ngủ yên,\nChỉ mong một tiếng 'yêu anh' dịu dàng 😚",
+      "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
+      "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
+    ];
+
+    let currentPoem = 0;
+    const poemDiv = document.getElementById('poem');
+
+    function showNextPoem() {
+      poemDiv.style.opacity = 0;
+      setTimeout(() => {
+        poemDiv.innerText = poems[currentPoem];
+        poemDiv.style.opacity = 1;
+        currentPoem = (currentPoem + 1) % poems.length;
+      }, 500);
     }
 
-    // Nút "No" chạy khi chuột lại gần
-    document.addEventListener('mousemove', (e) => {
-      const rect = noBtn.getBoundingClientRect();
-      const btnX = rect.left + rect.width / 2;
-      const btnY = rect.top + rect.height / 2;
-      const distance = getDistance(e.clientX, e.clientY, btnX, btnY);
-
-      if (distance < 100) {
-        const x = Math.floor(Math.random() * (window.innerWidth - rect.width));
-        const y = Math.floor(Math.random() * (window.innerHeight - rect.height - 100));
-        noBtn.style.left = `${x}px`;
-        noBtn.style.top = `${y}px`;
-      }
-    });
+    setInterval(showNextPoem, 5000);
+    showNextPoem();
   </script>
 </body>
 </html>
