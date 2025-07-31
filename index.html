@@ -68,6 +68,7 @@
       font-size: 18px;
       animation: fadeIn 2s ease-in-out;
       font-style: italic;
+      white-space: pre-line;
     }
 
     @keyframes fadeIn {
@@ -82,6 +83,13 @@
 
   <button id="no" class="btn">Không iu anhh 😠</button>
   <button id="yes" class="btn">có iuuu anh 💘</button>
+
+  <!-- Nhạc nền -->
+  <audio id="bg-music" autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2023/03/28/audio_57b40233aa.mp3" type="audio/mp3">
+  Trình duyệt của bạn không hỗ trợ phát nhạc 😥
+</audio>
+
 
   <div class="poem-container" id="poem"></div>
 
@@ -133,9 +141,8 @@
       }, 500);
     }
 
-    setInterval(showNextPoem, 5000); // đổi thơ mỗi 5 giây
+    setInterval(showNextPoem, 5000);
     showNextPoem();
   </script>
 </body>
 </html>
-
