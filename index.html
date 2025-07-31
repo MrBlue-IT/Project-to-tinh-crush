@@ -86,6 +86,7 @@
 
     .heart {
       position: absolute;
+      top: 0;
       color: red;
       font-size: 24px;
       animation: floatDown 6s linear forwards;
@@ -175,8 +176,15 @@
       heart.className = 'heart';
       heart.textContent = '💖';
       heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = '0px';
+
+      const size = 20 + Math.random() * 20;
+      const duration = 4 + Math.random() * 3;
+      heart.style.fontSize = `${size}px`;
+      heart.style.animationDuration = `${duration}s`;
+
       document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 6000);
+      setTimeout(() => heart.remove(), duration * 1000);
     }
 
     setInterval(() => {
