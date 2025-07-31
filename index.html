@@ -116,7 +116,7 @@
 <body>
   <div class="page-content">
     <h1>Em có iu anh khônggggg 👉👈</h1>
-    <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
+    <p>Nếu em không chọn hoặc thoát là em ghét anhh rồi 😡</p>
 
     <div class="poem-container" id="poem"></div>
 
@@ -135,26 +135,22 @@
     const yesBtn = document.getElementById('yes');
     const music = document.getElementById('bg-music');
 
+    // Nhảy nút "không"
     noBtn.addEventListener('mouseenter', () => {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight - 100;
-
       const newX = Math.random() * maxX;
       const newY = Math.random() * maxY;
-
       noBtn.style.left = `${newX}px`;
       noBtn.style.top = `${newY}px`;
     });
 
+    // Bấm "có"
     yesBtn.onclick = () => {
       alert("Anh cũng iu emmmmm 💖");
-      music.load();
-      music.play().catch(() => {
-        alert("Trình duyệt chặn tự động phát nhạc, hãy bấm lại nhé!");
-      });
     };
 
-    // Tim bay bay
+    // Tim bay
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -164,7 +160,7 @@
       setTimeout(() => heart.remove(), 4000);
     }, 300);
 
-    // Hiển thị thơ tình
+    // Thơ tình
     const poems = [
       "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
       "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
@@ -186,6 +182,15 @@
     }
     setInterval(showNextPoem, 5000);
     showNextPoem();
+
+    // Phát nhạc sau lần click đầu tiên vào bất kỳ đâu
+    function enableMusicOnce() {
+      music.play().catch(() => {
+        console.warn("Trình duyệt đã chặn phát nhạc tự động");
+      });
+      document.removeEventListener('click', enableMusicOnce);
+    }
+    document.addEventListener('click', enableMusicOnce);
   </script>
 </body>
 </html>
