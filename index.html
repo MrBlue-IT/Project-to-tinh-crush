@@ -45,7 +45,7 @@
             margin: 10px 0;
             z-index: 10;
         }
-        
+
         .poem-container {
             color: #8b0000;
             font-size: 20px;
@@ -59,14 +59,11 @@
             margin: 20px 0;
             position: relative;
         }
-        
+
         .btn-container {
             position: relative;
-            width: 300px;
-            height: 80px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 100%;
+            height: 100px;
             margin-top: 20px;
         }
 
@@ -79,19 +76,17 @@
             cursor: pointer;
             z-index: 10;
             transition: all 0.3s ease;
+            position: absolute;
         }
 
         #no {
             background-color: #ff4d4d;
             color: white;
-            position: absolute;
-            left: 0;
         }
 
         #yes {
             background-color: white;
             color: red;
-            position: absolute;
             right: 0;
         }
 
@@ -103,14 +98,8 @@
         }
 
         @keyframes floatDown {
-            0% {
-                transform: translateY(-50px) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) scale(0.5);
-                opacity: 0;
-            }
+            0% { transform: translateY(-50px) scale(1); opacity: 1; }
+            100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
         }
 
         @keyframes fadeIn {
@@ -118,24 +107,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        .music-player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: -1;
+        audio {
+            display: none;
         }
 
         @media (max-width: 600px) {
-            .poem-container {
-                font-size: 16px;
-            }
-            h1 {
-                font-size: 35px;
-            }
-            p {
-                font-size: 16px;
-            }
+            .poem-container { font-size: 16px; }
+            h1 { font-size: 35px; }
+            p { font-size: 16px; }
         }
     </style>
 </head>
@@ -143,52 +122,50 @@
     <div class="page-content">
         <h1>Em có iu anh khônggggg 👉👈</h1>
         <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
-        
+
         <div class="poem-container" id="poem"></div>
-        
+
         <div class="btn-container">
             <button id="no" class="btn">Không iu anhh 😠</button>
             <button id="yes" class="btn">có iuuu anh 💘</button>
         </div>
     </div>
-    
-    <div class="music-player">
-        <iframe
-            width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&color=%23ff6699&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
-        ></iframe>
-    </div>
+
+    <!-- Nhạc chèn dạng audio để điều khiển -->
+    <audio id="bg-music" loop>
+        <source src="https://files.catbox.moe/mr2rs6.mp3" type="audio/mpeg">
+    </audio>
 
     <script>
         const noBtn = document.getElementById('no');
-        const btnContainer = document.querySelector('.btn-container');
+        const yesBtn = document.getElementById('yes');
+        const music = document.getElementById('bg-music');
 
-        noBtn.addEventListener('mouseover', () => {
-            const containerRect = btnContainer.getBoundingClientRect();
-            
-            const x = Math.floor(Math.random() * (containerRect.width - noBtn.offsetWidth));
-            const y = Math.floor(Math.random() * (containerRect.height - noBtn.offsetHeight));
-            
-            noBtn.style.position = 'absolute';
+        // Nút chạy cực nhanh
+        document.addEventListener('mousemove', () => {
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 50);
             noBtn.style.left = `${x}px`;
             noBtn.style.top = `${y}px`;
         });
 
-        document.getElementById('yes').onclick = () => {
+        // Bắt đầu phát nhạc sau khi click
+        yesBtn.onclick = () => {
             alert("Anh cũng iu emmmmm 💖");
+            music.play();
         };
-        
+
+        // Trái tim bay
         setInterval(() => {
             const heart = document.createElement('div');
             heart.className = 'heart';
             heart.textContent = '💖';
             heart.style.left = Math.random() * window.innerWidth + 'px';
             document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
+            setTimeout(() => heart.remove(), 4000);
         }, 300);
 
+        // Thơ tình
         const poems = [
             "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
             "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
@@ -198,10 +175,8 @@
             "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
             "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
         ];
-
         let currentPoem = 0;
         const poemDiv = document.getElementById('poem');
-
         function showNextPoem() {
             poemDiv.style.opacity = 0;
             setTimeout(() => {
@@ -210,7 +185,6 @@
                 currentPoem = (currentPoem + 1) % poems.length;
             }, 500);
         }
-
         setInterval(showNextPoem, 5000);
         showNextPoem();
     </script>
