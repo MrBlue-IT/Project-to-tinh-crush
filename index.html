@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iu hong nè 💘</title>
+  <title>Code By Mr Blue</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -114,7 +114,6 @@
     const poem = document.getElementById('poem');
     const music = document.getElementById('bgMusic');
 
-    // Hiệu ứng tim rơi
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -124,7 +123,6 @@
       setTimeout(() => heart.remove(), 4000);
     }, 300);
 
-    // Thơ tự động thay đổi
     const poems = [
       "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
       "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
@@ -146,7 +144,6 @@
     setInterval(updatePoem, 5000);
     updatePoem();
 
-    // Nút "Không iu" chạy lung tung
     noBtn.addEventListener('mouseenter', () => {
       const maxX = window.innerWidth - noBtn.offsetWidth;
       const maxY = window.innerHeight - noBtn.offsetHeight;
@@ -156,12 +153,10 @@
       noBtn.style.top = `${y}px`;
     });
 
-    // Nút "Có iu"
     yesBtn.addEventListener('click', () => {
       alert("Anh cũng iu emm nhìu lắm đóooo 💖");
     });
 
-    // Phát nhạc sau khi người dùng chạm/bấm
     function startMusic() {
       if (music.paused) {
         music.play().catch(err => {
