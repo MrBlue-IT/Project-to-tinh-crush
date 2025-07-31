@@ -3,78 +3,93 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Code By Mr Blue</title>
+  <title>Code By Mr Blue 💘</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+      background-color: #ffd6e7;
+      overflow: hidden;
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-color: #ffd6e7;
-      font-family: 'Roboto', sans-serif;
-      text-align: center;
-      overflow: hidden;
+    }
+
+    .page-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px);
+      position: relative;
+      z-index: 10;
     }
 
     h1 {
-      font-family: 'Pacifico', cursive;
       color: #ff3366;
-      font-size: 48px;
-      margin-top: 40px;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      font-size: 50px;
+      margin-top: 30px;
+      font-family: 'Pacifico', cursive;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     }
 
     p {
+      font-size: 20px;
       color: #d70040;
-      font-size: 18px;
-      margin-bottom: 20px;
+      margin: 10px 0;
     }
 
-    .poem {
-      font-style: italic;
+    .poem-container {
       color: #8b0000;
       font-size: 20px;
-      max-width: 600px;
-      margin: 20px auto;
+      animation: fadeIn 2s ease-in-out;
+      font-style: italic;
       white-space: pre-line;
-      transition: opacity 0.5s ease;
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      margin: 20px 0;
     }
 
-    .buttons {
+    .btn-container {
       position: relative;
+      width: 100%;
       height: 120px;
       margin-top: 30px;
     }
 
     .btn {
       padding: 10px 20px;
-      font-size: 18px;
       border-radius: 20px;
       border: 2px solid red;
+      font-size: 18px;
       cursor: pointer;
+      transition: all 0.3s ease;
       position: absolute;
-      transition: 0.3s ease;
     }
 
     #yes {
       background-color: white;
       color: red;
       left: 50%;
-      bottom: 0;
       transform: translateX(-50%);
+      bottom: 0;
     }
 
     #no {
       background-color: #ff4d4d;
       color: white;
+      left: 20px;
+      top: 0;
     }
 
     .heart {
       position: absolute;
-      font-size: 24px;
       color: red;
-      animation: floatDown 4s linear forwards;
+      font-size: 24px;
+      animation: floatDown 4s linear infinite;
     }
 
     @keyframes floatDown {
@@ -82,37 +97,65 @@
       100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
     }
 
-    audio {
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    iframe {
       display: none;
     }
 
     @media (max-width: 600px) {
-      h1 { font-size: 36px; }
-      .poem { font-size: 16px; }
+      .poem-container { font-size: 16px; }
+      h1 { font-size: 35px; }
+      p { font-size: 16px; }
     }
   </style>
 </head>
 <body>
-  <h1>Em có iu anh khôngg 👉👈</h1>
-  <p>Nếu em không chọn hoặc thoát là em iu anh đó nha 😡</p>
+  <div class="page-content">
+    <h1>Em có iu anh khôngg 👉👈</h1>
+    <p>Nếu em không chọn hoặc thoát là em ghét anhh rồi 😡</p>
 
-  <div class="poem" id="poem"></div>
+    <div class="poem-container" id="poem"></div>
 
-  <div class="buttons">
-    <button class="btn" id="no">Không iu 😠</button>
-    <button class="btn" id="yes">Có iuuu anh 💘</button>
+    <div class="btn-container">
+      <button id="no" class="btn">Không iu anhh 😠</button>
+      <button id="yes" class="btn">có iuuu anh 💘</button>
+    </div>
   </div>
 
-  <audio id="bgMusic" preload="auto">
-    <source src="https://cdn.pixabay.com/download/audio/2023/04/19/audio_c61c40d8a8.mp3?filename=romantic-background-music-144121.mp3" type="audio/mp3">
-    Trình duyệt của bạn không hỗ trợ audio.
-  </audio>
+  <iframe id="sc-player" 
+    width="0" 
+    height="0" 
+    scrolling="no" 
+    frameborder="no" 
+    allow="autoplay"
+    src="">
+  </iframe>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
-    const poem = document.getElementById('poem');
-    const music = document.getElementById('bgMusic');
+    const poemDiv = document.getElementById('poem');
+    const iframe = document.getElementById('sc-player');
+
+    noBtn.addEventListener('mouseenter', () => {
+  const padding = 20;
+  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+  const newX = Math.random() * maxX;
+  const newY = Math.random() * maxY;
+
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
+});
+
+    yesBtn.onclick = () => {
+      alert("Anh cũng iu emmmmm 💖");
+    };
 
     setInterval(() => {
       const heart = document.createElement('div');
@@ -132,43 +175,23 @@
       "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
       "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
     ];
-    let index = 0;
-    function updatePoem() {
-      poem.style.opacity = 0;
+    let currentPoem = 0;
+    function showNextPoem() {
+      poemDiv.style.opacity = 0;
       setTimeout(() => {
-        poem.innerText = poems[index];
-        poem.style.opacity = 1;
-        index = (index + 1) % poems.length;
-      }, 400);
+        poemDiv.innerText = poems[currentPoem];
+        poemDiv.style.opacity = 1;
+        currentPoem = (currentPoem + 1) % poems.length;
+      }, 500);
     }
-    setInterval(updatePoem, 5000);
-    updatePoem();
+    setInterval(showNextPoem, 5000);
+    showNextPoem();
 
-    noBtn.addEventListener('mouseenter', () => {
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight;
-      const x = Math.random() * maxX;
-      const y = Math.random() * maxY;
-      noBtn.style.left = `${x}px`;
-      noBtn.style.top = `${y}px`;
-    });
-
-    yesBtn.addEventListener('click', () => {
-      alert("Anh cũng iu emm nhìu lắm đóooo 💖");
-    });
-
-    function startMusic() {
-      if (music.paused) {
-        music.play().catch(err => {
-          console.log("Không thể phát nhạc:", err);
-        });
-      }
-      document.removeEventListener('click', startMusic);
-      document.removeEventListener('touchstart', startMusic);
+    function playMusic() {
+      iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&auto_play=true";
+      document.removeEventListener('click', playMusic);
     }
-
-    document.addEventListener('click', startMusic);
-    document.addEventListener('touchstart', startMusic);
+    document.addEventListener('click', playMusic);
   </script>
 </body>
 </html>
