@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <title>Em có iu anh hongg 💘</title>
@@ -9,6 +9,8 @@
       font-family: Arial;
       background-color: #ffd6e7;
       overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
 
     h1 {
@@ -75,6 +77,14 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    .music-player {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      z-index: -1;
+    }
   </style>
 </head>
 <body>
@@ -84,17 +94,13 @@
   <button id="no" class="btn">Không iu anhh 😠</button>
   <button id="yes" class="btn">có iuuu anh 💘</button>
 
-  <!-- Nhạc nền -->
   <!-- Nhạc nền từ SoundCloud -->
-<iframe
-  width="0"
-  height="0"
-  allow="autoplay"
-  style="display: none"
-  src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&visual=false">
-</iframe>
-
-
+  <div class="music-player">
+    <iframe
+      width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&color=%23ff6699&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+    ></iframe>
+  </div>
 
   <div class="poem-container" id="poem"></div>
 
@@ -118,7 +124,6 @@
       heart.textContent = '💖';
       heart.style.left = Math.random() * window.innerWidth + 'px';
       document.body.appendChild(heart);
-
       setTimeout(() => {
         heart.remove();
       }, 4000);
