@@ -1,220 +1,220 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code By Mr Blue 💘</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            text-align: center;
-            font-family: 'Roboto', sans-serif; /* Sử dụng font chữ mới */
-            background-color: #ffd6e7;
-            overflow: hidden;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code By Mr Blue 💘</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Roboto', sans-serif; /* Sử dụng font chữ mới */
+            background-color: #ffd6e7;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
 
-        /* Thêm một lớp bao bọc toàn bộ nội dung chính */
-        .page-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: calc(100vh - 100px); /* Điều chỉnh chiều cao để chừa chỗ cho music player */
-            position: relative;
-            z-index: 10;
-        }
+        /* Thêm một lớp bao bọc toàn bộ nội dung chính */
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px); /* Điều chỉnh chiều cao để chừa chỗ cho music player */
+            position: relative;
+            z-index: 10;
+        }
 
-        h1 {
-            color: #ff3366;
-            font-size: 50px; /* Tăng kích thước chữ cho h1 */
-            margin-top: 30px;
-            font-family: 'Pacifico', cursive; /* Sử dụng font chữ đặc biệt cho h1 */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            z-index: 10;
-        }
+        h1 {
+            color: #ff3366;
+            font-size: 50px; /* Tăng kích thước chữ cho h1 */
+            margin-top: 30px;
+            font-family: 'Pacifico', cursive; /* Sử dụng font chữ đặc biệt cho h1 */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            z-index: 10;
+        }
 
-        p {
-            font-size: 20px;
-            color: #d70040;
-            margin: 10px 0;
-            z-index: 10;
-        }
-        
-        .poem-container {
-            color: #8b0000;
-            font-size: 20px; /* Tăng kích thước chữ cho đoạn thơ */
-            animation: fadeIn 2s ease-in-out;
-            font-style: italic;
-            white-space: pre-line;
-            z-index: 5;
-            text-align: center;
-            width: 90%;
-            max-width: 600px;
-            margin: 20px 0;
-            position: relative; /* Đảm bảo nó không bị đè lên các phần tử khác */
-        }
-        
-        .btn-container {
-            position: relative;
-            width: 300px; /* Chiều rộng cố định cho container nút */
-            height: 80px; /* Chiều cao cố định cho container nút */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 20px;
-        }
+        p {
+            font-size: 20px;
+            color: #d70040;
+            margin: 10px 0;
+            z-index: 10;
+        }
+        
+        .poem-container {
+            color: #8b0000;
+            font-size: 20px; /* Tăng kích thước chữ cho đoạn thơ */
+            animation: fadeIn 2s ease-in-out;
+            font-style: italic;
+            white-space: pre-line;
+            z-index: 5;
+            text-align: center;
+            width: 90%;
+            max-width: 600px;
+            margin: 20px 0;
+            position: relative; /* Đảm bảo nó không bị đè lên các phần tử khác */
+        }
+        
+        .btn-container {
+            position: relative;
+            width: 300px; /* Chiều rộng cố định cho container nút */
+            height: 80px; /* Chiều cao cố định cho container nút */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-        .btn {
-            padding: 10px 20px;
-            border-radius: 20px;
-            border: 2px solid red;
-            margin: 10px;
-            font-size: 18px;
-            cursor: pointer;
-            z-index: 10;
-            transition: all 0.3s ease;
-        }
+        .btn {
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: 2px solid red;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
 
-        #no {
-            background-color: #ff4d4d;
-            color: white;
-            position: absolute;
-            left: 0;
-        }
+        #no {
+            background-color: #ff4d4d;
+            color: white;
+            position: absolute;
+            left: 0;
+        }
 
-        #yes {
-            background-color: white;
-            color: red;
-            position: absolute;
-            right: 0;
-        }
+        #yes {
+            background-color: white;
+            color: red;
+            position: absolute;
+            right: 0;
+        }
 
-        .heart {
-            position: absolute;
-            color: red;
-            font-size: 24px;
-            animation: floatDown 4s linear infinite;
-        }
+        .heart {
+            position: absolute;
+            color: red;
+            font-size: 24px;
+            animation: floatDown 4s linear infinite;
+        }
 
-        @keyframes floatDown {
-            0% {
-                transform: translateY(-50px) scale(1);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) scale(0.5);
-                opacity: 0;
-            }
-        }
+        @keyframes floatDown {
+            0% {
+                transform: translateY(-50px) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+        }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-        .music-player {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            z-index: -1;
-        }
+        .music-player {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1;
+        }
 
-        @media (max-width: 600px) {
-            .poem-container {
-                font-size: 16px;
-            }
-            h1 {
-                font-size: 35px;
-            }
-            p {
-                font-size: 16px;
-            }
-        }
-    </style>
+        @media (max-width: 600px) {
+            .poem-container {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 35px;
+            }
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="page-content">
-        <h1>Em có iu anh khônggggg 👉👈</h1>
-        <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
-        
-        <div class="poem-container" id="poem"></div>
-        
-        <div class="btn-container">
-            <button id="no" class="btn">Không iu anhh 😠</button>
-            <button id="yes" class="btn">có iuuu anh 💘</button>
-        </div>
-    </div>
-    
-    <div class="music-player">
-        <iframe
-            width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&color=%23ff6699&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
-        ></iframe>
-    </div>
+    <div class="page-content">
+        <h1>Em có iu anh khônggggg 👉👈</h1>
+        <p>Nếu anh không chọn hoặc thoát là em ghét anhh rồi 😡</p>
+        
+        <div class="poem-container" id="poem"></div>
+        
+        <div class="btn-container">
+            <button id="no" class="btn">Không iu anhh 😠</button>
+            <button id="yes" class="btn">có iuuu anh 💘</button>
+        </div>
+    </div>
+    
+    <div class="music-player">
+        <iframe
+            width="100%" height="80" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&color=%23ff6699&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+        ></iframe>
+    </div>
 
-    <script>
-        const noBtn = document.getElementById('no');
-        const btnContainer = document.querySelector('.btn-container');
+    <script>
+        const noBtn = document.getElementById('no');
+        const btnContainer = document.querySelector('.btn-container');
 
-        noBtn.addEventListener('mouseover', () => {
-            const containerRect = btnContainer.getBoundingClientRect();
-            
-            const x = Math.floor(Math.random() * (containerRect.width - noBtn.offsetWidth));
-            const y = Math.floor(Math.random() * (containerRect.height - noBtn.offsetHeight));
-            
-            noBtn.style.position = 'absolute';
-            noBtn.style.left = `${x}px`;
-            noBtn.style.top = `${y}px`;
-        });
+        noBtn.addEventListener('mouseover', () => {
+            const containerRect = btnContainer.getBoundingClientRect();
+            
+            const x = Math.floor(Math.random() * (containerRect.width - noBtn.offsetWidth));
+            const y = Math.floor(Math.random() * (containerRect.height - noBtn.offsetHeight));
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        });
 
-        document.getElementById('yes').onclick = () => {
-            alert("Anh cũng iu emmmmm 💖");
-        };
-        
-        setInterval(() => {
-            const heart = document.createElement('div');
-            heart.className = 'heart';
-            heart.textContent = '💖';
-            heart.style.left = Math.random() * window.innerWidth + 'px';
-            document.body.appendChild(heart);
-            setTimeout(() => {
-                heart.remove();
-            }, 4000);
-        }, 300);
+        document.getElementById('yes').onclick = () => {
+            alert("Anh cũng iu emmmmm 💖");
+        };
+        
+        setInterval(() => {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.textContent = '💖';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            document.body.appendChild(heart);
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }, 300);
 
-        const poems = [
-            "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
-            "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
-            "Trái tim anh không đỏ,\nNhưng vì em mà hóa ngọc ngà ❤️",
-            "Anh không phải thi sĩ đâu,\nNhưng em là cả bài thơ anh viết 💌",
-            "Đêm nằm anh chẳng ngủ yên,\nChỉ mong một tiếng 'yêu anh' dịu dàng 😚",
-            "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
-            "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
-        ];
+        const poems = [
+            "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
+            "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
+            "Trái tim anh không đỏ,\nNhưng vì em mà hóa ngọc ngà ❤️",
+            "Anh không phải thi sĩ đâu,\nNhưng em là cả bài thơ anh viết 💌",
+            "Đêm nằm anh chẳng ngủ yên,\nChỉ mong một tiếng 'yêu anh' dịu dàng 😚",
+            "Tu tiên anh cũng không màng,\nMiễn là em gật đầu nhẹ nhàng làm tiên phụ ✨",
+            "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
+        ];
 
-        let currentPoem = 0;
-        const poemDiv = document.getElementById('poem');
+        let currentPoem = 0;
+        const poemDiv = document.getElementById('poem');
 
-        function showNextPoem() {
-            poemDiv.style.opacity = 0;
-            setTimeout(() => {
-                poemDiv.innerText = poems[currentPoem];
-                poemDiv.style.opacity = 1;
-                currentPoem = (currentPoem + 1) % poems.length;
-            }, 500);
-        }
+        function showNextPoem() {
+            poemDiv.style.opacity = 0;
+            setTimeout(() => {
+                poemDiv.innerText = poems[currentPoem];
+                poemDiv.style.opacity = 1;
+                currentPoem = (currentPoem + 1) % poems.length;
+            }, 500);
+        }
 
-        setInterval(showNextPoem, 5000);
-        showNextPoem();
-    </script>
+        setInterval(showNextPoem, 5000);
+        showNextPoem();
+    </script>
 </body>
 </html>
