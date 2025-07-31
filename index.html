@@ -102,7 +102,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    audio {
+    iframe {
       display: none;
     }
 
@@ -126,14 +126,21 @@
     </div>
   </div>
 
-  <audio id="bg-music" loop>
-    <source src="https://soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n?si=1329a7c722eb440d8a4d8a90bcb29751&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" type="audio/mpeg">
-  </audio>
+  <!-- Nhạc từ SoundCloud -->
+  <iframe id="sc-player" 
+    width="0" 
+    height="0" 
+    scrolling="no" 
+    frameborder="no" 
+    allow="autoplay"
+    src="">
+  </iframe>
 
   <script>
     const noBtn = document.getElementById('no');
     const yesBtn = document.getElementById('yes');
-    const music = document.getElementById('bg-music');
+    const poemDiv = document.getElementById('poem');
+    const iframe = document.getElementById('sc-player');
 
     // Nhảy nút "không"
     noBtn.addEventListener('mouseenter', () => {
@@ -171,7 +178,6 @@
       "Code bug anh vẫn sửa liền,\nChỉ cần em nhắn: “Anh ơii yêu thiệt hông?” 🥺"
     ];
     let currentPoem = 0;
-    const poemDiv = document.getElementById('poem');
     function showNextPoem() {
       poemDiv.style.opacity = 0;
       setTimeout(() => {
@@ -183,14 +189,12 @@
     setInterval(showNextPoem, 5000);
     showNextPoem();
 
-    // Phát nhạc sau lần click đầu tiên vào bất kỳ đâu
-    function enableMusicOnce() {
-      music.play().catch(() => {
-        console.warn("Trình duyệt đã chặn phát nhạc tự động");
-      });
-      document.removeEventListener('click', enableMusicOnce);
+    // Phát nhạc bằng iframe sau lần click đầu tiên
+    function playMusic() {
+      iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&auto_play=true";
+      document.removeEventListener('click', playMusic);
     }
-    document.addEventListener('click', enableMusicOnce);
+    document.addEventListener('click', playMusic);
   </script>
 </body>
 </html>
