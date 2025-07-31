@@ -142,22 +142,22 @@
     const poemDiv = document.getElementById('poem');
     const iframe = document.getElementById('sc-player');
 
-    // Nhảy nút "không"
     noBtn.addEventListener('mouseenter', () => {
-      const maxX = window.innerWidth - noBtn.offsetWidth;
-      const maxY = window.innerHeight - noBtn.offsetHeight - 100;
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-      noBtn.style.left = `${newX}px`;
-      noBtn.style.top = `${newY}px`;
-    });
+  const padding = 20;
+  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
 
-    // Bấm "có"
+  const newX = Math.random() * maxX;
+  const newY = Math.random() * maxY;
+
+  noBtn.style.left = `${newX}px`;
+  noBtn.style.top = `${newY}px`;
+});
+
     yesBtn.onclick = () => {
       alert("Anh cũng iu emmmmm 💖");
     };
 
-    // Tim bay
     setInterval(() => {
       const heart = document.createElement('div');
       heart.className = 'heart';
@@ -167,7 +167,6 @@
       setTimeout(() => heart.remove(), 4000);
     }, 300);
 
-    // Thơ tình
     const poems = [
       "Gặp em như gió thoảng qua,\nMà sao tim đập lệ nhòa cả tim 💓",
       "Trà anh pha hơi bị đậm,\nNhưng yêu em là thật đấy 😳",
@@ -189,7 +188,6 @@
     setInterval(showNextPoem, 5000);
     showNextPoem();
 
-    // Phát nhạc bằng iframe sau lần click đầu tiên
     function playMusic() {
       iframe.src = "https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/h-n-nguy-n-651012164/n-ng-d-i-ch-n-m-y-remix-b-n&auto_play=true";
       document.removeEventListener('click', playMusic);
