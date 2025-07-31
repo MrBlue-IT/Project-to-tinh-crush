@@ -75,7 +75,7 @@
 
     @keyframes floatDown {
       0% {
-        transform: translateY(-30px) scale(1);
+        transform: translateY(-40px) scale(1);
         opacity: 1;
       }
       100% {
@@ -84,14 +84,15 @@
       }
     }
 
-    .heart {
+    .falling {
       position: absolute;
       top: 0;
       color: red;
       font-size: 24px;
-      animation: floatDown 6s linear forwards;
+      animation: floatDown linear forwards;
       pointer-events: none;
       z-index: 0;
+      user-select: none;
     }
 
     @keyframes fadeIn {
@@ -171,24 +172,19 @@
       alert("Anh cũng iu emmmmm 💖");
     };
 
-    function createHeart() {
-      const heart = document.createElement('div');
-      heart.className = 'heart';
-      heart.textContent = '💖';
-      heart.style.left = Math.random() * window.innerWidth + 'px';
-      heart.style.top = '0px';
-
-      const size = 20 + Math.random() * 20;
-      const duration = 4 + Math.random() * 3;
-      heart.style.fontSize = `${size}px`;
-      heart.style.animationDuration = `${duration}s`;
-
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), duration * 1000);
+    function createFallingItem() {
+      const item = document.createElement('div');
+      item.className = 'falling';
+      item.style.left = Math.random() * window.innerWidth + 'px';
+      item.style.fontSize = `${20 + Math.random() * 20}px`;
+      item.style.animationDuration = `${4 + Math.random() * 3}s`;
+      item.textContent = Math.random() > 0.5 ? '💖' : 'Iu em vl 😍';
+      document.body.appendChild(item);
+      setTimeout(() => item.remove(), 7000);
     }
 
     setInterval(() => {
-      for (let i = 0; i < 3; i++) createHeart();
+      for (let i = 0; i < 3; i++) createFallingItem();
     }, 300);
 
     function playMusic() {
